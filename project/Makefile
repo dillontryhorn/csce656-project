@@ -2,7 +2,7 @@
 #
 include ../makedefs
 
-PGM = sprite
+PGM = project
 
 OBJS = \
 	main.o \
