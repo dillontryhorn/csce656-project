@@ -1,4 +1,5 @@
 
+map = "../assets/tilemaps/test.map"
 
 assets = {}
 assets["tank-image"] = "../assets/images/tank-big-right.png"
@@ -17,6 +18,13 @@ entities["chopper"] = {
                  width = 32, height = 32, scale = 1 },
    sprite =    { texture_id = "chopper-image" }
 }
+
+function print_map_location()
+   print("-----------------------")
+   print("Map File Location")
+   print("-----------------------")
+   print(map)
+end
 
 function print_assets_table(tbl)
    print("-----------------------")
@@ -45,6 +53,8 @@ end
 print("===================")
 print("Config.lua Contents")
 print("===================")
+print_map_location()
+print()
 print_assets_table(assets)
 print()
 print_entities_table(entities)

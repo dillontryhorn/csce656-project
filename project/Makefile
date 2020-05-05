@@ -10,7 +10,8 @@ OBJS = \
 	sdl_utils.o \
 	Entity.o \
 	EntityManager.o \
-	AssetManager.o
+	AssetManager.o \
+	MapManager.o \
 
 all: $(PGM)
 

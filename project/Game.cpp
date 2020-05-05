@@ -12,6 +12,10 @@
 #include "components/TransformComponent.hpp"
 #include "components/SpriteComponent.hpp"
 
+#include "MapManager.hpp"
+
+MapManager* Game::game_map{};
+
 SDL_Renderer* Game::renderer{};
 
 EntityManager entity_mgr;
@@ -77,6 +81,7 @@ void Game::render()
 {
    SDL_RenderClear(renderer);
    entity_mgr.render();
+   game_map->draw_map();
    SDL_RenderPresent(renderer);
 }
 
@@ -85,6 +90,8 @@ void Game::load_level(const int number)
    sol::state lua; //open a lua state
    lua.open_libraries(sol::lib::base, sol::lib::table);
    lua.script_file("config.lua"); //and go through config.lua file
+
+   game_map = new MapManager(lua["map"].get<std::string>());
    
    //Look through config.lua and create defined assets
    sol::lua_table assets = lua["assets"];
@@ -130,5 +137,6 @@ void Game::load_level(const int number)
          }
       }
    }
+   std::cout << "Map File Location: " << game_map->get_map_name() << std::endl;
    entity_mgr.list_all_entities();
 }

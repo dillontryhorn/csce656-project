@@ -5,6 +5,7 @@
 #include "SDL2/SDL.h"
 
 class AssetManager;
+class MapManager;
 
 class Game
 {
@@ -23,6 +24,7 @@ public:
 
    static SDL_Renderer* renderer;
    static AssetManager* asset_manager;
+   static MapManager* game_map;
 
 private:
    int counter{};
